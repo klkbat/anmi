@@ -896,184 +896,6 @@
     .sidewalk--left .sidewalk-kiosk { left: 12%; }
     .sidewalk--right .sidewalk-kiosk { right: 12%; }
 
-    /* مرور — سيارات وباصات (مسار المركبات فوق ممر المشاة) */
-    .road-traffic {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 56%;
-      z-index: 5;
-      pointer-events: none;
-      overflow: hidden;
-    }
-
-    .traffic-veh {
-      position: absolute;
-      bottom: clamp(4px, 1.2vh, 14px);
-      width: var(--vw, 72px);
-      height: var(--vh, 30px);
-      animation: trafficPosLTR var(--vdur, 14s) linear infinite;
-      animation-delay: var(--vdelay, 0s);
-    }
-
-    .traffic-veh.traffic-rtl {
-      animation-name: trafficPosRTL;
-    }
-
-    .traffic-veh.bus {
-      --vw: clamp(100px, 24vw, 168px);
-      --vh: clamp(34px, 7.5vw, 48px);
-    }
-
-    .traffic-veh.car-sm {
-      --vw: clamp(44px, 11vw, 78px);
-      --vh: clamp(24px, 5.2vw, 34px);
-    }
-
-    @keyframes trafficPosLTR {
-      0% {
-        left: -24%;
-      }
-      100% {
-        left: 118%;
-      }
-    }
-
-    @keyframes trafficPosRTL {
-      0% {
-        left: 118%;
-      }
-      100% {
-        left: -24%;
-      }
-    }
-
-    .veh-graphic {
-      position: absolute;
-      inset: 0;
-    }
-
-    .traffic-rtl .veh-graphic {
-      transform: scaleX(-1);
-    }
-
-    .veh-body {
-      position: absolute;
-      inset: 0;
-      border-radius: 7px 12px 6px 6px;
-      background: var(
-        --vbody,
-        linear-gradient(180deg, #3a3848 0%, #1c1b24 55%, #121018 100%)
-      );
-      border: 2px solid rgba(20, 20, 28, 0.95);
-      box-shadow:
-        0 0 12px rgba(0, 240, 255, 0.14),
-        inset 0 1px 0 rgba(255, 255, 255, 0.06);
-    }
-
-    .veh-hood {
-      position: absolute;
-      top: 10%;
-      right: 4%;
-      width: 22%;
-      height: 52%;
-      border-radius: 3px 6px 4px 2px;
-      background: linear-gradient(180deg, #2a2835, #16141c);
-      border: 1px solid rgba(0, 240, 255, 0.12);
-    }
-
-    .veh-cabin {
-      position: absolute;
-      top: 14%;
-      left: 14%;
-      right: 26%;
-      height: 44%;
-      border-radius: 3px;
-      background: linear-gradient(
-        180deg,
-        rgba(0, 240, 255, 0.22) 0%,
-        rgba(139, 92, 246, 0.12) 100%
-      );
-      border: 1px solid rgba(0, 240, 255, 0.2);
-    }
-
-    .traffic-veh.bus .veh-cabin {
-      left: 8%;
-      right: 10%;
-      background: repeating-linear-gradient(
-        90deg,
-        rgba(0, 240, 255, 0.2) 0 10px,
-        rgba(15, 15, 22, 0.85) 10px 16px
-      );
-      border-radius: 2px;
-    }
-
-    .veh-tail-light {
-      position: absolute;
-      left: 5%;
-      top: 42%;
-      width: 5px;
-      height: 8px;
-      border-radius: 1px;
-      background: #f97316;
-      box-shadow: 0 0 8px rgba(249, 115, 22, 0.7);
-    }
-
-    .veh-head-light {
-      position: absolute;
-      right: 6%;
-      top: 48%;
-      width: 6px;
-      height: 5px;
-      border-radius: 1px;
-      background: rgba(200, 230, 255, 0.95);
-      box-shadow: 0 0 10px rgba(0, 240, 255, 0.55);
-    }
-
-    .veh-wheel {
-      position: absolute;
-      bottom: -5px;
-      width: clamp(14px, 3.2vw, 22px);
-      height: clamp(14px, 3.2vw, 22px);
-      border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, #3f3f48, #141418 70%);
-      border: 2px solid #0a0a0e;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.45);
-    }
-
-    .veh-wheel.w1 {
-      left: 14%;
-    }
-
-    .veh-wheel.w2 {
-      right: 16%;
-    }
-
-    .traffic-veh.bus .veh-wheel.w1 {
-      left: 10%;
-    }
-
-    .traffic-veh.bus .veh-wheel.w2 {
-      right: 12%;
-    }
-
-    .traffic-veh.v-orange {
-      --vbody: linear-gradient(180deg, #7c2d12 0%, #431207 60%, #1a0a04 100%);
-    }
-
-    .traffic-veh.v-violet {
-      --vbody: linear-gradient(180deg, #4c1d95 0%, #2e1065 60%, #180a35 100%);
-    }
-
-    .traffic-veh.v-teal {
-      --vbody: linear-gradient(180deg, #115e59 0%, #0f766e 45%, #042f2e 100%);
-    }
-
-    .traffic-veh.bus.v-silver .veh-body {
-      background: linear-gradient(180deg, #52525b 0%, #3f3f46 40%, #27272a 100%);
-    }
-
     /* طائرة */
     .air-layer {
       position: absolute;
@@ -1567,6 +1389,26 @@
       pointer-events: none;
     }
 
+    /* ألعاب نارية خلف المباني (تحت طبقة الناطحات z-index: 4) */
+    #fireworks-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    /* إخفاء زر كتم الصوت إن وُجد — لا يُعطّل Web Audio */
+    #soundMuteBtn,
+    #btnMuteSound,
+    .sound-mute-btn,
+    .mute-sound-toggle {
+      display: none !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+    }
+
   </style>
 </head>
 <body>
@@ -1732,6 +1574,8 @@
       <div class="nature-fog"></div>
     </div>
 
+    <canvas id="fireworks-canvas" aria-hidden="true"></canvas>
+
     <div class="buildings">
       <div class="tower t1">
         <div class="tower-spire"></div>
@@ -1829,74 +1673,6 @@
         <div class="road-footpath" aria-hidden="true"></div>
         <div class="road-manhole" aria-hidden="true"></div>
         <div class="road-manhole mh2" aria-hidden="true"></div>
-        <div class="road-traffic" aria-hidden="true">
-          <div class="traffic-veh car-sm v-teal" style="--vdur: 10.5s; --vdelay: -0.8s; bottom: 26%">
-            <div class="veh-graphic">
-              <div class="veh-body"></div>
-              <div class="veh-hood"></div>
-              <div class="veh-cabin"></div>
-              <div class="veh-tail-light"></div>
-              <div class="veh-head-light"></div>
-              <span class="veh-wheel w1"></span>
-              <span class="veh-wheel w2"></span>
-            </div>
-          </div>
-          <div class="traffic-veh v-orange" style="--vdur: 13s; --vdelay: -4.2s; bottom: 8%">
-            <div class="veh-graphic">
-              <div class="veh-body"></div>
-              <div class="veh-hood"></div>
-              <div class="veh-cabin"></div>
-              <div class="veh-tail-light"></div>
-              <div class="veh-head-light"></div>
-              <span class="veh-wheel w1"></span>
-              <span class="veh-wheel w2"></span>
-            </div>
-          </div>
-          <div class="traffic-veh bus v-silver" style="--vdur: 18s; --vdelay: -2s; bottom: 12%">
-            <div class="veh-graphic">
-              <div class="veh-body"></div>
-              <div class="veh-hood"></div>
-              <div class="veh-cabin"></div>
-              <div class="veh-tail-light"></div>
-              <div class="veh-head-light"></div>
-              <span class="veh-wheel w1"></span>
-              <span class="veh-wheel w2"></span>
-            </div>
-          </div>
-          <div class="traffic-veh car-sm v-violet traffic-rtl" style="--vdur: 11.8s; --vdelay: -7s; bottom: 30%">
-            <div class="veh-graphic">
-              <div class="veh-body"></div>
-              <div class="veh-hood"></div>
-              <div class="veh-cabin"></div>
-              <div class="veh-tail-light"></div>
-              <div class="veh-head-light"></div>
-              <span class="veh-wheel w1"></span>
-              <span class="veh-wheel w2"></span>
-            </div>
-          </div>
-          <div class="traffic-veh traffic-rtl" style="--vdur: 12.4s; --vdelay: -9.5s; bottom: 6%">
-            <div class="veh-graphic">
-              <div class="veh-body"></div>
-              <div class="veh-hood"></div>
-              <div class="veh-cabin"></div>
-              <div class="veh-tail-light"></div>
-              <div class="veh-head-light"></div>
-              <span class="veh-wheel w1"></span>
-              <span class="veh-wheel w2"></span>
-            </div>
-          </div>
-          <div class="traffic-veh bus traffic-rtl" style="--vdur: 22s; --vdelay: -12s; bottom: 22%">
-            <div class="veh-graphic">
-              <div class="veh-body"></div>
-              <div class="veh-hood"></div>
-              <div class="veh-cabin"></div>
-              <div class="veh-tail-light"></div>
-              <div class="veh-head-light"></div>
-              <span class="veh-wheel w1"></span>
-              <span class="veh-wheel w2"></span>
-            </div>
-          </div>
-        </div>
       </div>
       <aside class="sidewalk sidewalk--right" aria-hidden="true">
         <div class="sidewalk-grate" aria-hidden="true"></div>
@@ -2420,6 +2196,404 @@
       }
 
       requestAnimationFrame(frame);
+    })();
+  </script>
+  <script>
+    (function () {
+      var canvas = document.getElementById("fireworks-canvas");
+      if (!canvas) return;
+      var ctx = canvas.getContext("2d");
+      var W = 0;
+      var H = 0;
+      var dpr = 1;
+      var rockets = [];
+      var sparks = [];
+      var nextRocketAt = 0;
+      var FW_RATE = 20;
+      var MAX_ROCKETS = 4 * FW_RATE;
+      var FW_PARTICLE_MUL = Math.sqrt(FW_RATE);
+      var MAX_SPARKS = 18000;
+      var palette = [
+        [0, 240, 255],
+        [139, 92, 246],
+        [249, 115, 22],
+        [253, 224, 71],
+        [244, 114, 182],
+        [255, 255, 255],
+        [16, 185, 129],
+      ];
+
+      function resize() {
+        var stage = document.getElementById("stage");
+        var rect = stage ? stage.getBoundingClientRect() : { width: innerWidth, height: innerHeight };
+        dpr = Math.min(2, window.devicePixelRatio || 1);
+        W = Math.max(320, Math.floor(rect.width));
+        H = Math.max(480, Math.floor(rect.height));
+        canvas.width = Math.floor(W * dpr);
+        canvas.height = Math.floor(H * dpr);
+        canvas.style.width = W + "px";
+        canvas.style.height = H + "px";
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+
+      function dispatchSound(intensity) {
+        document.dispatchEvent(new CustomEvent("anmi-firework", { detail: intensity }));
+      }
+
+      function rgbStr(r, g, b, a) {
+        return "rgba(" + r + "," + g + "," + b + "," + a + ")";
+      }
+
+      function burst(cx, cy, scale, playSound) {
+        scale = scale == null ? 1 : scale;
+        var n = Math.floor((48 + Math.random() * 56) * scale * FW_PARTICLE_MUL);
+        var pi = palette[(Math.random() * palette.length) | 0];
+        var pi2 = palette[(Math.random() * palette.length) | 0];
+        for (var i = 0; i < n; i++) {
+          if (sparks.length >= MAX_SPARKS) break;
+          var ang = Math.random() * Math.PI * 2;
+          var spd = (2.2 + Math.random() * 6.5) * scale;
+          var t = Math.random();
+          var r = pi[0] * (1 - t) + pi2[0] * t;
+          var g = pi[1] * (1 - t) + pi2[1] * t;
+          var b = pi[2] * (1 - t) + pi2[2] * t;
+          sparks.push({
+            x: cx,
+            y: cy,
+            vx: Math.cos(ang) * spd,
+            vy: Math.sin(ang) * spd,
+            life: 1,
+            decay: 0.006 + Math.random() * 0.014,
+            r: 0.9 + Math.random() * 2.4,
+            cr: r,
+            cg: g,
+            cb: b,
+            tw: Math.random() < 0.22,
+          });
+        }
+        if (playSound && Math.random() < 0.58) dispatchSound(0.95 + Math.random() * 0.55);
+      }
+
+      function spawnRocket() {
+        var x0 = W * (0.12 + Math.random() * 0.76);
+        var y0 = H * (0.78 + Math.random() * 0.12);
+        var tx = W * (0.15 + Math.random() * 0.7);
+        var ty = H * (0.1 + Math.random() * 0.26);
+        var dist = Math.hypot(tx - x0, ty - y0);
+        var dur = Math.max(34, Math.min(72, dist / 14));
+        rockets.push({
+          x0: x0,
+          y0: y0,
+          x: x0,
+          y: y0,
+          tx: tx,
+          ty: ty,
+          t: 0,
+          dur: dur,
+          trail: [],
+        });
+        if (Math.random() < 1 / FW_RATE) dispatchSound(0.12 + Math.random() * 0.06);
+      }
+
+      function tickRocket(r) {
+        r.t += 1;
+        var u = r.t / r.dur;
+        if (u >= 1) {
+          burst(r.tx, r.ty, 0.85 + Math.random() * 0.35, true);
+          if (Math.random() < 0.82) {
+            window.setTimeout(function () {
+              burst(r.tx + (Math.random() - 0.5) * 40, r.ty + (Math.random() - 0.5) * 28, 0.45, true);
+            }, 120 + Math.random() * 160);
+          }
+          return false;
+        }
+        var e = 1 - Math.pow(1 - u, 2);
+        r.x = r.x0 + (r.tx - r.x0) * e;
+        r.y = r.y0 + (r.ty - r.y0) * e;
+        r.trail.push({ x: r.x, y: r.y, a: 0.55 * (1 - u) });
+        if (r.trail.length > 10) r.trail.shift();
+        return true;
+      }
+
+      var frame = 0;
+      function loop() {
+        frame++;
+        if (W < 2 || H < 2) {
+          requestAnimationFrame(loop);
+          return;
+        }
+        if (frame >= nextRocketAt && rockets.length < MAX_ROCKETS) {
+          spawnRocket();
+          nextRocketAt = frame + (55 + Math.random() * 110) / FW_RATE;
+        }
+
+        ctx.globalCompositeOperation = "source-over";
+        ctx.clearRect(0, 0, W, H);
+        ctx.globalCompositeOperation = "lighter";
+
+        for (var i = rockets.length - 1; i >= 0; i--) {
+          if (!tickRocket(rockets[i])) rockets.splice(i, 1);
+        }
+
+        rockets.forEach(function (r) {
+          for (var t = 0; t < r.trail.length; t++) {
+            var tr = r.trail[t];
+            ctx.beginPath();
+            ctx.arc(tr.x, tr.y, 1.2, 0, Math.PI * 2);
+            ctx.fillStyle = rgbStr(200, 230, 255, tr.a * 0.35);
+            ctx.fill();
+          }
+          ctx.beginPath();
+          ctx.arc(r.x, r.y, 2.4, 0, Math.PI * 2);
+          ctx.fillStyle = rgbStr(255, 248, 220, 0.95);
+          ctx.fill();
+        });
+
+        for (var j = sparks.length - 1; j >= 0; j--) {
+          var p = sparks[j];
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += 0.075;
+          p.vx *= 0.988;
+          p.vy *= 0.988;
+          p.life -= p.decay;
+          if (p.life <= 0) {
+            sparks.splice(j, 1);
+            continue;
+          }
+          var al = p.life * (p.tw ? 0.85 + Math.sin(frame * 0.35) * 0.15 : 1);
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r * Math.sqrt(p.life), 0, Math.PI * 2);
+          ctx.fillStyle = rgbStr(p.cr, p.cg, p.cb, al * 0.9);
+          ctx.fill();
+        }
+
+        requestAnimationFrame(loop);
+      }
+
+      resize();
+      window.addEventListener("resize", resize);
+      requestAnimationFrame(loop);
+    })();
+  </script>
+  <script>
+    (function () {
+      var ctx = null;
+      var master = null;
+      var noiseSource = null;
+      var oscNodes = [];
+      var chimeTimer = null;
+      var cycleMs = 16800;
+      var built = false;
+      var started = false;
+      var nodesStarted = false;
+
+      function makeNoiseBuffer(ac, sec) {
+        var len = Math.floor(ac.sampleRate * sec);
+        var buf = ac.createBuffer(1, len, ac.sampleRate);
+        var d = buf.getChannelData(0);
+        for (var i = 0; i < len; i++) {
+          d[i] = Math.random() * 2 - 1;
+        }
+        return buf;
+      }
+
+      function playChime() {
+        if (!ctx || ctx.state !== "running" || !master) return;
+        var t = ctx.currentTime;
+        var freqs = [523.25, 659.25, 783.99];
+        for (var i = 0; i < freqs.length; i++) {
+          (function (freq, delay) {
+            var o = ctx.createOscillator();
+            o.type = "sine";
+            o.frequency.value = freq;
+            var g = ctx.createGain();
+            g.gain.setValueAtTime(0, t + delay);
+            g.gain.linearRampToValueAtTime(0.032, t + delay + 0.018);
+            g.gain.exponentialRampToValueAtTime(0.001, t + delay + 0.32);
+            o.connect(g);
+            g.connect(master);
+            o.start(t + delay);
+            o.stop(t + delay + 0.38);
+          })(freqs[i], i * 0.048);
+        }
+      }
+
+      function playFireworkSound(intensity) {
+        if (!ctx || ctx.state !== "running" || !master) return;
+        var sc = typeof intensity === "number" ? intensity : 1;
+        sc = Math.max(0.05, Math.min(1.85, sc));
+        var t = ctx.currentTime;
+        var noiseDur = 0.09 + Math.random() * 0.07;
+        var bufLen = Math.max(1, Math.floor(ctx.sampleRate * noiseDur));
+        var nbuf = ctx.createBuffer(1, bufLen, ctx.sampleRate);
+        var nd = nbuf.getChannelData(0);
+        var i;
+        for (i = 0; i < bufLen; i++) {
+          nd[i] = (Math.random() * 2 - 1) * (1 - i / bufLen);
+        }
+        var nsrc = ctx.createBufferSource();
+        nsrc.buffer = nbuf;
+        var bpf = ctx.createBiquadFilter();
+        bpf.type = "bandpass";
+        bpf.frequency.value = 320 + Math.random() * 620;
+        bpf.Q.value = 0.65;
+        var ng = ctx.createGain();
+        var peak = 0.14 * sc;
+        ng.gain.setValueAtTime(0, t);
+        ng.gain.linearRampToValueAtTime(peak, t + 0.002);
+        ng.gain.exponentialRampToValueAtTime(0.001, t + noiseDur + 0.1);
+        nsrc.connect(bpf);
+        bpf.connect(ng);
+        ng.connect(master);
+        nsrc.start(t);
+        nsrc.stop(t + noiseDur + 0.12);
+
+        var boom = ctx.createOscillator();
+        boom.type = "sine";
+        boom.frequency.setValueAtTime(88 + Math.random() * 55, t);
+        boom.frequency.exponentialRampToValueAtTime(28, t + 0.16);
+        var bg = ctx.createGain();
+        bg.gain.setValueAtTime(0, t);
+        bg.gain.linearRampToValueAtTime(0.085 * sc, t + 0.005);
+        bg.gain.exponentialRampToValueAtTime(0.001, t + 0.28);
+        boom.connect(bg);
+        bg.connect(master);
+        boom.start(t);
+        boom.stop(t + 0.3);
+
+        for (i = 0; i < 7; i++) {
+          (function (delay) {
+            var o = ctx.createOscillator();
+            o.type = "triangle";
+            o.frequency.value = 750 + Math.random() * 1600;
+            var g = ctx.createGain();
+            g.gain.setValueAtTime(0, t + delay);
+            g.gain.linearRampToValueAtTime(0.034 * sc, t + delay + 0.002);
+            g.gain.exponentialRampToValueAtTime(0.001, t + delay + 0.055);
+            o.connect(g);
+            g.connect(master);
+            o.start(t + delay);
+            o.stop(t + delay + 0.08);
+          })(0.012 + i * 0.018 + Math.random() * 0.02);
+        }
+      }
+
+      function buildGraph() {
+        if (built) return;
+        built = true;
+        ctx = new (window.AudioContext || window.webkitAudioContext)();
+        master = ctx.createGain();
+        master.gain.value = 0;
+        master.connect(ctx.destination);
+
+        var rainBuf = makeNoiseBuffer(ctx, 2);
+        noiseSource = ctx.createBufferSource();
+        noiseSource.buffer = rainBuf;
+        noiseSource.loop = true;
+        var rainF = ctx.createBiquadFilter();
+        rainF.type = "lowpass";
+        rainF.frequency.value = 700;
+        rainF.Q.value = 0.65;
+        var rainG = ctx.createGain();
+        rainG.gain.value = 0.052;
+        noiseSource.connect(rainF);
+        rainF.connect(rainG);
+        rainG.connect(master);
+
+        var lfo = ctx.createOscillator();
+        lfo.type = "sine";
+        lfo.frequency.value = 0.11;
+        var lfoG = ctx.createGain();
+        lfoG.gain.value = 140;
+        lfo.connect(lfoG);
+        lfoG.connect(rainF.frequency);
+        oscNodes.push(lfo);
+
+        var humFreqs = [58, 87, 116];
+        for (var h = 0; h < humFreqs.length; h++) {
+          var o = ctx.createOscillator();
+          o.type = h === 0 ? "sine" : "triangle";
+          o.frequency.value = humFreqs[h];
+          var g = ctx.createGain();
+          g.gain.value = 0.012 / (1 + h * 0.5);
+          o.connect(g);
+          g.connect(master);
+          oscNodes.push(o);
+        }
+
+        var neon = ctx.createOscillator();
+        neon.type = "sine";
+        neon.frequency.value = 1980;
+        var neonG = ctx.createGain();
+        neonG.gain.value = 0.005;
+        neon.connect(neonG);
+        neonG.connect(master);
+        oscNodes.push(neon);
+      }
+
+      function startAudioNodes() {
+        if (nodesStarted || !ctx || ctx.state !== "running") return;
+        nodesStarted = true;
+        if (noiseSource) noiseSource.start(0);
+        for (var i = 0; i < oscNodes.length; i++) {
+          oscNodes[i].start(0);
+        }
+      }
+
+      function startChimes() {
+        if (chimeTimer) window.clearInterval(chimeTimer);
+        chimeTimer = window.setInterval(playChime, cycleMs);
+        window.setTimeout(playChime, 1400);
+      }
+
+      function fadeIn() {
+        if (!ctx || !master) return;
+        var t = ctx.currentTime;
+        master.gain.cancelScheduledValues(t);
+        master.gain.setValueAtTime(0, t);
+        master.gain.linearRampToValueAtTime(0.13, t + 1.1);
+      }
+
+      function unlockAudio() {
+        if (!built) buildGraph();
+        if (!ctx) return;
+        ctx.resume().then(function () {
+          if (ctx.state !== "running") return;
+          startAudioNodes();
+          var first = !started;
+          if (first) {
+            started = true;
+            startChimes();
+          }
+          if (first || (master && master.gain.value < 0.01)) fadeIn();
+        }).catch(function () {});
+      }
+
+      window.addEventListener("load", unlockAudio);
+      document.addEventListener("pointerdown", unlockAudio, { passive: true });
+      document.addEventListener("touchstart", unlockAudio, { passive: true });
+      document.addEventListener("keydown", unlockAudio);
+      document.addEventListener("click", unlockAudio);
+      document.addEventListener("visibilitychange", function () {
+        if (document.visibilityState === "visible" && ctx) {
+          ctx.resume().then(function () {
+            if (ctx.state !== "running") return;
+            startAudioNodes();
+            if (!started) {
+              started = true;
+              startChimes();
+            }
+            if (master && master.gain.value < 0.01) fadeIn();
+          }).catch(function () {});
+        }
+      });
+      setTimeout(unlockAudio, 100);
+
+      document.addEventListener("anmi-firework", function (ev) {
+        var d = ev && ev.detail;
+        playFireworkSound(typeof d === "number" ? d : 0.7);
+      });
     })();
   </script>
 </body>
